@@ -1,4 +1,6 @@
-# Welcome to your Lovable project
+# La Bella Mesa - Premium Catering Website
+
+Built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## Project info
 

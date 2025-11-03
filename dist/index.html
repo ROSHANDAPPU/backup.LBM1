@@ -19,6 +19,11 @@
           history.replaceState(null, null, redirect);
         }
       })();
+
+      // Additional fallback for React Router
+      if (!window.location.hash && window.location.pathname !== '/') {
+        window.location.hash = window.location.pathname;
+      }
     </script>
   </body>
 </html>

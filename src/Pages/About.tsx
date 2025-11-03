@@ -1,15 +1,12 @@
 import { useState } from "react";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/UI/button";
-
-import { Lightbox } from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import Partners from "@/components/Partners";
-import Testimonials from "@/components/Testimonials";
-import GalleryGrid from "@/components/GalleryGrid";
-import CTAPanel from "@/components/CTAPanel";
+import Header from "@/Components/Header";
+import Hero from "@/Components/Hero";
+import Footer from "@/Components/Footer";
+import { Button } from "@/Components/UI/button";
+import Partners from "@/Components/Partners";
+import Testimonials from "@/Components/Testimonials";
+import GalleryGrid from "@/Components/GalleryGrid";
+import CTAPanel from "@/Components/CTAPanel";
 
 const teamMembers = [
    {

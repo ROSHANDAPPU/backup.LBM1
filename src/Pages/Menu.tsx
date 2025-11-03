@@ -1,10 +1,9 @@
 import { useState } from "react";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/UI/button";
-import { Link } from "react-router-dom";
-import CTAPanel from "@/components/CTAPanel";
+import Header from "@/Components/Header";
+import Hero from "@/Components/Hero";
+import Footer from "@/Components/Footer";
+import { Button } from "@/Components/UI/button";
+import CTAPanel from "@/Components/CTAPanel";
 
 const Menu = () => {
   const [activeSection, setActiveSection] = useState('family-style');

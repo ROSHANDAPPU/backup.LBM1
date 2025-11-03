@@ -1,10 +1,10 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import GalleryGrid from "@/components/GalleryGrid";
-import Hero from "@/components/Hero";
-import { Button } from "@/components/UI/button";
+import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
+import GalleryGrid from "@/Components/GalleryGrid";
+import Hero from "@/Components/Hero";
+import { Button } from "@/Components/UI/button";
 import { Link } from "react-router-dom";
-import CTAPanel from "@/components/CTAPanel";
+import CTAPanel from "@/Components/CTAPanel";
 
 const Gallery = () => {
   return (

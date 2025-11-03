@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "./UI/button";
 
 interface HeroProps {
   title: React.ReactNode;

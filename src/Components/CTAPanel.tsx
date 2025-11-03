@@ -1,4 +1,4 @@
-import { Button } from "@/components/UI/button";
+import { Button } from "@/Components/UI/button";
 import { Link } from "react-router-dom";
 
 interface CTAPanelProps {

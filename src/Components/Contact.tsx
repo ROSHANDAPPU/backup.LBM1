@@ -1,6 +1,6 @@
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
+import { Button } from "./UI/button";
+import { Input } from "./UI/input";
+import { Textarea } from "./UI/textarea";
 
 const Contact = () => {
   return (

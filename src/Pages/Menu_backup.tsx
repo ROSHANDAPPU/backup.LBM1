@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import { Button } from "@/components/UI/button";
+import { Button } from "@/Components/UI/button";
 import { Link, useNavigate } from 'react-router-dom';
 
 // import businessCardCream from 'figma:asset/6b400490cc61dbc71522459ab83bafbe29d05aea.png';

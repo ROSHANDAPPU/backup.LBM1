@@ -4,6 +4,7 @@ import GalleryGrid from "@/Components/GalleryGrid";
 import Hero from "@/Components/Hero";
 import { Button } from "@/Components/UI/button";
 import { Link } from "react-router-dom";
+import ScrollIndicator from "@/Components/ScrollIndicator";
 import CTAPanel from "@/Components/CTAPanel";
 
 const Gallery = () => {
@@ -19,10 +20,7 @@ const Gallery = () => {
           </Button>
         }
       />
-      <div className="flex flex-col items-center animate-bounce mt-3">
-        <span className="text-sm tracking-widest text-foreground">SCROLL</span>
-        <div className="w-px h-16 bg-foreground mt-2"></div>
-      </div>
+      <ScrollIndicator />
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl md:text-5xl font-light tracking-tight text-center mb-16" style={{ marginTop: '27px', fontFamily: 'Libre Baskerville, serif' }}>Our Gallery</h1>
         <GalleryGrid />

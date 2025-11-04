@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -16,6 +18,7 @@ const Header = () => {
     // Reset scroll position and navbar state when route changes
     window.scrollTo(0, 0);
     setIsScrolled(false);
+    setIsMobileMenuOpen(false);
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -24,7 +27,7 @@ const Header = () => {
   return (
     <header
       className={`navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-        isScrolled
+        isScrolled || isMobileMenuOpen
           ? 'bg-background shadow-soft'
           : 'bg-transparent'
       }`}
@@ -34,19 +37,21 @@ const Header = () => {
     >
       <nav className="container mx-auto px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ease-in-out ${
-          isScrolled ? 'h-32' : 'h-40'
+          isScrolled ? 'h-20' : 'h-28'
         }`}>
-          {/* Left navigation */}
-          <div className="flex items-center space-x-8 nav-left">
-            <a href="#services" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
-              SERVICES
-            </a>
-            <Link to="/about" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
-              ABOUT
-            </Link>
-            <Link to="/gallery" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
-              GALLERY
-            </Link>
+          <div className="flex-1 flex justify-start">
+            {/* Left navigation */}
+            <div className="hidden md:flex items-center space-x-8 nav-left">
+              <a href="#services" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+                SERVICES
+              </a>
+              <Link to="/about" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+                ABOUT
+              </Link>
+              <Link to="/gallery" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+                GALLERY
+              </Link>
+            </div>
           </div>
 
           {/* Center logo */}
@@ -68,20 +73,55 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Right navigation */}
-          <div className="flex items-center space-x-8 nav-right">
-            <Link to="/menu" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+          <div className="flex-1 flex justify-end">
+            {/* Right navigation */}
+            <div className="hidden md:flex items-center space-x-8 nav-right">
+              <Link to="/menu" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+                MENU
+              </Link>
+              <Link to="/our-process" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+                OUR PROCESS
+              </Link>
+              <Link to="/book-event" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+                BOOK EVENT
+              </Link>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground">
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-background shadow-soft">
+          <div className="container mx-auto px-8 py-4 flex flex-col space-y-4">
+            <a href="#services" className="text-sm font-medium text-foreground hover:text-brass">
+              SERVICES
+            </a>
+            <Link to="/about" className="text-sm font-medium text-foreground hover:text-brass">
+              ABOUT
+            </Link>
+            <Link to="/gallery" className="text-sm font-medium text-foreground hover:text-brass">
+              GALLERY
+            </Link>
+            <Link to="/menu" className="text-sm font-medium text-foreground hover:text-brass">
               MENU
             </Link>
-            <Link to="/our-process" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+            <Link to="/our-process" className="text-sm font-medium text-foreground hover:text-brass">
               OUR PROCESS
             </Link>
-            <Link to="/book-event" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
+            <Link to="/book-event" className="text-sm font-medium text-foreground hover:text-brass">
               BOOK EVENT
             </Link>
           </div>
         </div>
-      </nav>
+      )}
     </header>
   );
 };

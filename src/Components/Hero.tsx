@@ -35,6 +35,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2 }) => {
              borderRadius: '1rem'
            }}
       >
+        <div className="burgundy-flair" />
         <div
           style={{
             position: 'absolute',

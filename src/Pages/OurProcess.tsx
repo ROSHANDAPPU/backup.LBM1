@@ -6,6 +6,7 @@ import Timeline from "@/Components/Timeline";
 import { useFadeIn } from "@/Hooks/useFadeIn";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/Components/UI/accordion";
 import { ChevronRight } from "lucide-react";
+import ScrollIndicator from "@/Components/ScrollIndicator";
 
 const OurProcess = () => {
   const [ref1, isVisible1] = useFadeIn<HTMLDivElement>();
@@ -19,6 +20,7 @@ const OurProcess = () => {
         subtitle="from inquiry to event day"
         cta1={<Button size="lg" className="mt-8">Start Your Proposal</Button>}
       />
+      <ScrollIndicator />
 
       {/* Timeline Section */}
       <div className="py-16 bg-light-cream">

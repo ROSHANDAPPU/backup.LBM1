@@ -1,5 +1,6 @@
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
+import ScrollIndicator from "@/Components/ScrollIndicator";
 import culinaryImage from "@/assets/service-culinary.jpg";
 
 const Catering = () => {
@@ -18,6 +19,7 @@ const Catering = () => {
           </p>
         </div>
       </div>
+      <ScrollIndicator />
 
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-background">
         <div className="container mx-auto max-w-4xl text-center">

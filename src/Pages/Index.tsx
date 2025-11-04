@@ -13,6 +13,12 @@ import Masonry from 'react-masonry-css';
 import { Lightbox } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useState, useEffect, useRef } from "react";
+import ScrollIndicator from '@/Components/ScrollIndicator';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 // Custom hook for alternating direction autoplay
 const useAlternatingAutoplay = (swiperRef, delay = 3000, isEnabled = true) => {
@@ -42,11 +48,6 @@ const useAlternatingAutoplay = (swiperRef, delay = 3000, isEnabled = true) => {
     };
   }, [swiperRef, delay, isEnabled]);
 };
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 const Index = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -101,55 +102,62 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
+
       <Hero 
         title="Effortless Elegance for Your Event"
         subtitle="QUIET, ACCESSIBLE LUXURY FOR EVERY OCCASION."
         cta1={<Button size="lg" className="text-base font-normal tracking-wide">REQUEST A PROPOSAL</Button>}
         cta2={<Button size="lg" variant="outline" className="text-base font-normal tracking-wide">VIEW MENU</Button>}
       />
-      <div className="flex flex-col items-center animate-bounce mt-3">
-        <span className="text-sm tracking-widest text-foreground">SCROLL</span>
-        <div className="w-px h-16 bg-foreground mt-2"></div>
-      </div>
+      <ScrollIndicator />
 
-      {/* Social Proof Section */}
-      <div
-        className="social-proof-section flex flex-col items-center justify-center w-full bg-background"
-        style={{ height: '30vh' }}
-      >
-        {/* Star Rating */}
-        <div className="flex items-center mb-4">
-          <span className="text-2xl mr-2" style={{ color: 'hsl(var(--accent))' }}>★★★★★</span>
-          <span className="text-sm font-medium" style={{ color: 'hsl(var(--foreground))' }}>4.9</span>
-        </div>
-        <p className="text-lg mb-8 text-foreground font-medium" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Trusted by
-        </p>
-        {/* Partner Logos Grid */}
-        <div className="trusted-logos grid grid-cols-6 gap-8">
-          {/* Example Logos */}
-          <div className="logo-item flex flex-col items-center">
-            <img src="/src/Design/08_Icons/8f388a16829c958b732671ccdf50737a.jpg" alt="The Grand Estate" className="w-16 h-16 object-contain mb-2" />
-          </div>
-          <div className="logo-item flex flex-col items-center">
-            <img src="/src/Design/08_Icons/pngtree-golden-3d-flower-abstract-design-element-png-image_16529175.png" alt="Bloom & Grow Florals" className="w-16 h-16 object-contain mb-2" />
-          </div>
-          <div className="logo-item flex flex-col items-center">
-            <img src="/src/Design/08_Icons/265-2651733_gold-spoon-fork-knife-crown-png-clipart.png.jpeg" alt="The Gourmet Pantry" className="w-16 h-16 object-contain mb-2" />
-          </div>
-          <div className="logo-item flex flex-col items-center">
-            <img src="/src/Design/08_Icons/cc7cb7a398214859b9bc6b658914f68c.jpg" alt="Eternal Events Hall" className="w-16 h-16 object-contain mb-2" />
-          </div>
-          <div className="logo-item flex flex-col items-center">
-            {/* Placeholder for Vineyard Vows */}
-            <div className="w-16 h-16 flex items-center justify-center text-5xl mb-2" style={{ color: '#B8860B' }}>🍇</div>
-          </div>
-          <div className="logo-item flex flex-col items-center">
-            <img src="/src/Design/08_Icons/pngtree-clipart-of-a-golden-musical-note-elegantly-designed-to-represent-harmony-png-image_13919537.png" alt="Harmony Music" className="w-16 h-16 object-contain mb-2" />
-          </div>
-        </div>
-      </div>
+      {/* Trusted By Section */}
+      <section className="trusted-by-section py-8 text-center">
+        <h2 className="section-title mb-4">
+          Trusted By
+        </h2>
+      </section>
 
+      {/* Logos Slider Section */}
+      <section className="flx flx-logos">
+        <div className="logos-swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+          {/* Additional required wrapper */}
+          <div className="swiper-wrapper" id="swiper-wrapper-68e2710a4619c8a5e" aria-live="off">
+            <div className="swiper-slide">
+              <span className="logo-text-large">TATLER</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">ROCK MY WEDDING</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">BRIDES</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">SO YOU'RE GETTING MARRIED</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">WHIMSICAL WONDERLAND WEDDINGS</span>
+            </div>
+            {/* Duplicate for continuous loop */}
+            <div className="swiper-slide">
+              <span className="logo-text-large">TATLER</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">ROCK MY WEDDING</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">BRIDES</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">SO YOU'RE GETTING MARRIED</span>
+            </div>
+            <div className="swiper-slide">
+              <span className="logo-text-large">WHIMSICAL WONDERLAND WEDDINGS</span>
+            </div>
+          </div>
+          <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+      </section>
 
       <Ethos />
       <Services />

@@ -7,6 +7,9 @@ import Partners from "@/Components/Partners";
 import Testimonials from "@/Components/Testimonials";
 import GalleryGrid from "@/Components/GalleryGrid";
 import CTAPanel from "@/Components/CTAPanel";
+import Lightbox from "yet-another-react-lightbox";
+import ScrollIndicator from "@/Components/ScrollIndicator";
+import "yet-another-react-lightbox/styles.css";
 
 const teamMembers = [
    {
@@ -46,6 +49,7 @@ const About = () => {
         subtitle="chef-led menus with discreet hospitality"
         cta1={<Button size="lg" className="mt-8">Book a Tasting</Button>}
       />
+      <ScrollIndicator />
 
       {/* Our Story Section */}
       <div className="py-16 bg-background">

@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/Components/Header";
 import Hero from "@/Components/Hero";
 import Footer from "@/Components/Footer";
 import { Button } from "@/Components/UI/button";
+import ScrollIndicator from "@/Components/ScrollIndicator";
 import CTAPanel from "@/Components/CTAPanel";
 
 const Menu = () => {
@@ -38,10 +40,7 @@ const Menu = () => {
           </Button>
         }
       />
-      <div className="flex flex-col items-center animate-bounce mt-3">
-        <span className="text-sm tracking-widest text-foreground">SCROLL</span>
-        <div className="w-px h-16 bg-foreground mt-2"></div>
-      </div>
+      <ScrollIndicator />
 
       {/* Menu Navigation */}
       <div className="py-8 px-6 bg-background">

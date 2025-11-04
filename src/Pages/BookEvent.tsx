@@ -8,6 +8,7 @@ import { Textarea } from "@/Components/UI/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/Components/UI/select";
 import { Checkbox } from "@/Components/UI/checkbox";
 import { useToast } from "@/Hooks/use-toast";
+import Testimonials from "@/Components/Testimonials";
 
 const BookEvent = () => {
   const { toast } = useToast();
@@ -416,28 +417,7 @@ const BookEvent = () => {
         </div>
       </div>
 
-      {/* Mini Testimonials */}
-      <div className="py-16 bg-light-cream">
-        <div className="container mx-auto px-8">
-          <h2 className="text-3xl font-light text-center text-ink-navy mb-12" style={{ fontFamily: 'Libre Baskerville, serif' }}>
-            What Our Clients Say
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <p className="text-ink-navy italic mb-4">"La Bella Mesa made our wedding day absolutely perfect. Every detail was handled with care."</p>
-              <cite className="text-brass font-semibold">- Sarah & Michael</cite>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <p className="text-ink-navy italic mb-4">"The food was incredible and the service was impeccable. Highly recommend!"</p>
-              <cite className="text-brass font-semibold">- Jane Smith, Corporate Event</cite>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <p className="text-ink-navy italic mb-4">"From start to finish, the team was professional and accommodating to all our needs."</p>
-              <cite className="text-brass font-semibold">- David Johnson</cite>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Testimonials />
 
       {/* FAQ Section */}
       <div className="py-16 bg-white">

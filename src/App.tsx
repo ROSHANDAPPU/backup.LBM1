@@ -11,6 +11,8 @@ import Events from "./Pages/Events";
 import Menu from "./Pages/Menu";
 import About from "./Pages/About";
 import Gallery from "./Pages/Gallery";
+import OurProcess from "./Pages/OurProcess";
+import BookEvent from "./Pages/BookEvent";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -40,6 +42,8 @@ const App = () => (
           <Route path="/menu" element={<Menu />} />
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/our-process" element={<OurProcess />} />
+          <Route path="/book-event" element={<BookEvent />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

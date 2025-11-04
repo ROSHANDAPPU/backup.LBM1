@@ -30,7 +30,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <div className="bg-stone-100 py-20">
+    <div className="bg-stone py-20">
       <div className="container mx-auto text-center">
         <div className="relative h-64">
           {testimonialsData.map((testimonial, index) => (

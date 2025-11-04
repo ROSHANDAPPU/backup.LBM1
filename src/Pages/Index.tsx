@@ -259,14 +259,23 @@ const Index = () => {
                 spaceBetween: 0,
               },
               1200: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 0,
               },
             }}
           >
             {galleryImages.map((image, index) => (
               <SwiperSlide key={index}>
-                <img src={image.src} alt={image.alt} />
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  className="w-full aspect-square object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop'; // Fallback image
+                  }}
+                />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -14,6 +14,7 @@ import { Lightbox } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useState, useEffect, useRef } from "react";
 import ScrollIndicator from '@/Components/ScrollIndicator';
+import { useFadeInUp, useSlideInLeft, useSlideInRight, useScaleIn, useBounceIn, useStaggerReveal, useRotateIn } from '@/Hooks/useScrollAnimation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -54,6 +55,16 @@ const Index = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const swiperRef = useRef(null);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Scroll animation hooks
+  const { elementRef: trustedByRef, isVisible: trustedByVisible } = useFadeInUp();
+  const { elementRef: logosRef, isVisible: logosVisible } = useSlideInLeft();
+  const { elementRef: ethosRef, isVisible: ethosVisible } = useScaleIn();
+  const { elementRef: servicesRef, isVisible: servicesVisible } = useStaggerReveal();
+  const { elementRef: signatureRef, isVisible: signatureVisible } = useBounceIn();
+  const { elementRef: ourWorkRef, isVisible: ourWorkVisible } = useSlideInRight();
+  const { elementRef: socialProofRef, isVisible: socialProofVisible } = useFadeInUp();
+  const { elementRef: testimonialsRef, isVisible: testimonialsVisible } = useRotateIn();
 
   // Built-in autoplay now handles timing
 
@@ -112,14 +123,20 @@ const Index = () => {
       <ScrollIndicator />
 
       {/* Trusted By Section */}
-      <section className="trusted-by-section py-8 text-center">
+      <section
+        ref={trustedByRef}
+        className={`trusted-by-section py-8 text-center ${trustedByVisible ? 'animate-fade-in-up animate-visible' : 'animate-fade-in-up'}`}
+      >
         <h2 className="section-title mb-4">
           Trusted By
         </h2>
       </section>
 
       {/* Logos Slider Section */}
-      <section className="flx flx-logos">
+      <section
+        ref={logosRef}
+        className={`flx flx-logos ${logosVisible ? 'animate-slide-in-left animate-visible' : 'animate-slide-in-left'}`}
+      >
         <div className="logos-swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
           {/* Additional required wrapper */}
           <div className="swiper-wrapper" id="swiper-wrapper-68e2710a4619c8a5e" aria-live="off">
@@ -159,8 +176,19 @@ const Index = () => {
         </div>
       </section>
 
-      <Ethos />
-      <Services />
+      <div
+        ref={ethosRef}
+        className={`${ethosVisible ? 'animate-scale-in animate-visible' : 'animate-scale-in'}`}
+      >
+        <Ethos />
+      </div>
+
+      <div
+        ref={servicesRef}
+        className={`${servicesVisible ? 'animate-stagger-reveal animate-visible' : 'animate-stagger-reveal'}`}
+      >
+        <Services />
+      </div>
 
       {/* Gold separator line */}
       <div className="flex justify-center py-8">
@@ -170,7 +198,10 @@ const Index = () => {
       <SocialProof />
 
       {/* Signature Experiences Section */}
-      <div className="signature-experiences-section py-16 w-full bg-background">
+      <div
+        ref={signatureRef}
+        className={`signature-experiences-section py-16 w-full bg-background ${signatureVisible ? 'animate-bounce-in animate-visible' : 'animate-bounce-in'}`}
+      >
         <div className="container mx-auto px-8 text-center">
           <h2 className="section-title">Signature Experiences</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -230,7 +261,10 @@ const Index = () => {
       </div>
 
       {/* Our Work (Event Highlights Gallery) */}
-      <section className="event-highlights">
+      <section
+        ref={ourWorkRef}
+        className={`event-highlights ${ourWorkVisible ? 'animate-slide-in-right animate-visible' : 'animate-slide-in-right'}`}
+      >
         <div className="container">
           <h2 className="section-title">Our Work</h2>
           <Swiper
@@ -294,7 +328,19 @@ const Index = () => {
         </div>
       </section>
 
-      <Testimonials />
+      <div
+        ref={socialProofRef}
+        className={`${socialProofVisible ? 'animate-fade-in-up animate-visible' : 'animate-fade-in-up'}`}
+      >
+        <SocialProof />
+      </div>
+
+      <div
+        ref={testimonialsRef}
+        className={`${testimonialsVisible ? 'animate-rotate-in animate-visible' : 'animate-rotate-in'}`}
+      >
+        <Testimonials />
+      </div>
 
       {/* Gold separator line */}
       <div className="flex justify-center py-8">

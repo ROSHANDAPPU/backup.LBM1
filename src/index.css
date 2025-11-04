@@ -550,6 +550,104 @@ All colors MUST be HSL.
     opacity: 1 !important;
   }
 
+  /* Scroll Animations */
+  .animate-fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-fade-in-up.animate-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-slide-in-left.animate-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-slide-in-right.animate-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-scale-in.animate-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .animate-bounce-in {
+    opacity: 0;
+    transform: scale(0.3);
+    animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .animate-bounce-in.animate-visible {
+    opacity: 1;
+    animation: bounce-in-visible 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes bounce-in {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 0.5; transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { opacity: 0; transform: scale(0.3); }
+  }
+
+  @keyframes bounce-in-visible {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-stagger-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-stagger-reveal.animate-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays for cards */
+  .animate-stagger-reveal:nth-child(1) { transition-delay: 0.1s; }
+  .animate-stagger-reveal:nth-child(2) { transition-delay: 0.2s; }
+  .animate-stagger-reveal:nth-child(3) { transition-delay: 0.3s; }
+  .animate-stagger-reveal:nth-child(4) { transition-delay: 0.4s; }
+
+  .animate-rotate-in {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-rotate-in.animate-visible {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
   /* Responsive Adjustments */
   @media (max-width: 768px) {
     .event-highlights {

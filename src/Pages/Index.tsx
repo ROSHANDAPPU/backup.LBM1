@@ -15,6 +15,7 @@ import "yet-another-react-lightbox/styles.css";
 import { useState, useEffect, useRef } from "react";
 import ScrollIndicator from '@/Components/ScrollIndicator';
 import { useFadeInUp, useSlideInLeft, useSlideInRight, useScaleIn, useBounceIn, useStaggerReveal, useRotateIn } from '@/Hooks/useScrollAnimation';
+import { useRandomFlowAnimation } from '@/Hooks/useRandomFlowAnimation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -61,7 +62,7 @@ const Index = () => {
   const { elementRef: logosRef, isVisible: logosVisible } = useSlideInLeft();
   const { elementRef: ethosRef, isVisible: ethosVisible } = useScaleIn();
   const { elementRef: servicesRef, isVisible: servicesVisible } = useStaggerReveal();
-  const { elementRef: signatureRef, isVisible: signatureVisible } = useBounceIn();
+  const { containerRef: randomFlowRef, isVisible: randomFlowVisible } = useRandomFlowAnimation();
   const { elementRef: ourWorkRef, isVisible: ourWorkVisible } = useSlideInRight();
   const { elementRef: socialProofRef, isVisible: socialProofVisible } = useFadeInUp();
   const { elementRef: testimonialsRef, isVisible: testimonialsVisible } = useRotateIn();
@@ -199,14 +200,14 @@ const Index = () => {
 
       {/* Signature Experiences Section */}
       <div
-        ref={signatureRef}
-        className={`signature-experiences-section py-16 w-full bg-background ${signatureVisible ? 'animate-bounce-in animate-visible' : 'animate-bounce-in'}`}
+        ref={randomFlowRef}
+        className="signature-experiences-section py-16 w-full bg-background"
       >
         <div className="container mx-auto px-8 text-center">
           <h2 className="section-title">Signature Experiences</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Card 1: Weddings */}
-            <div className="card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden">
+            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
               <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Weddings</h3>
               <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Crafting unforgettable culinary journeys for your special day.</p>
@@ -219,7 +220,7 @@ const Index = () => {
             </div>
 
             {/* Card 2: Corporate */}
-            <div className="card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden">
+            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
               <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Corporate</h3>
               <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Elevating business events with sophisticated and seamless catering.</p>
@@ -232,7 +233,7 @@ const Index = () => {
             </div>
 
             {/* Card 3: Intimate Gatherings */}
-            <div className="card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden">
+            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
               <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Intimate Gatherings</h3>
               <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Personalized dining experiences for cherished moments with loved ones.</p>
@@ -245,7 +246,7 @@ const Index = () => {
             </div>
 
             {/* Card 4: Special Occasions */}
-            <div className="card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden">
+            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
               <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Special Occasions</h3>
               <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Celebrating life's milestones with exquisite food and impeccable service.</p>
@@ -327,13 +328,6 @@ const Index = () => {
 
         </div>
       </section>
-
-      <div
-        ref={socialProofRef}
-        className={`${socialProofVisible ? 'animate-fade-in-up animate-visible' : 'animate-fade-in-up'}`}
-      >
-        <SocialProof />
-      </div>
 
       <div
         ref={testimonialsRef}

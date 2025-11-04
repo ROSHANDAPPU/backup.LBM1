@@ -620,6 +620,45 @@ All colors MUST be HSL.
     100% { opacity: 1; transform: scale(1); }
   }
 
+  .animate-random-flow {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-random-flow.animate-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Random flow animations with delays */
+  .animate-random-flow:nth-child(1) {
+    transform: translateX(-100px);
+    transition-delay: 0.1s;
+  }
+
+  .animate-random-flow:nth-child(2) {
+    transform: translateX(100px);
+    transition-delay: 0.3s;
+  }
+
+  .animate-random-flow:nth-child(3) {
+    transform: translateX(-100px);
+    transition-delay: 0.2s;
+  }
+
+  .animate-random-flow:nth-child(4) {
+    transform: translateX(100px);
+    transition-delay: 0.4s;
+  }
+
+  .animate-random-flow.animate-visible:nth-child(1),
+  .animate-random-flow.animate-visible:nth-child(2),
+  .animate-random-flow.animate-visible:nth-child(3),
+  .animate-random-flow.animate-visible:nth-child(4) {
+    transform: translateX(0);
+  }
+
   .animate-stagger-reveal {
     opacity: 0;
     transform: translateY(20px);

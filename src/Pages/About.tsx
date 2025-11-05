@@ -15,7 +15,7 @@ const teamMembers = [
    {
      name: "Chef Isabella Romano",
      title: "Founder & Executive Chef",
-     image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=400&fit=crop",
+     image: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=400&h=400&fit=crop",
      bio: "With over two decades of culinary artistry, Chef Isabella brings Italian heritage and modern innovation to every La Bella Mesa experience. Her philosophy of effortless elegance guides our approach to both cuisine and hospitality.",
    },
    {
@@ -27,7 +27,7 @@ const teamMembers = [
    {
      name: "Elena Vasquez",
      title: "Hospitality Curator",
-     image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop",
+     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
      bio: "Elena crafts the perfect atmosphere for each gathering, blending aesthetics with genuine care. Her intuitive approach to guest experience creates the calm, welcoming spaces that make our events unforgettable.",
    },
  ];
@@ -44,10 +44,10 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero 
+      <Hero
         title="Our Story, Quietly Told"
         subtitle="chef-led menus with discreet hospitality"
-        cta1={<Button size="lg" className="mt-8">Book a Tasting</Button>}
+        cta1={<Button size="lg" className="mt-8 uppercase tracking-wide">Book a Tasting</Button>}
       />
       <ScrollIndicator />
 
@@ -125,7 +125,7 @@ const About = () => {
       </div>
 
       {/* Team Section */}
-      <div className="py-16 bg-background">
+      <div className="py-16" style={{ backgroundColor: 'hsl(var(--background-secondary))' }}>
         <div className="container mx-auto px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-16" style={{ fontFamily: 'Libre Baskerville, serif' }}>Meet Our Team</h2>
           <div className="grid md:grid-cols-3 gap-12">
@@ -171,7 +171,22 @@ const About = () => {
       />
 
       <Testimonials />
-      <Partners />
+      <div className="bg-background py-16">
+        <div className="container mx-auto">
+          <h2 className="text-center text-3xl font-bold text-gray-800">Our Partners</h2>
+          <div className="flex justify-center items-center mt-8 space-x-8">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-12 filter grayscale" />
+            <div className="h-12 w-px bg-brass"></div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-12 filter grayscale" />
+            <div className="h-12 w-px bg-brass"></div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" className="h-12 filter grayscale" />
+            <div className="h-12 w-px bg-brass"></div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-12 filter grayscale" />
+            <div className="h-12 w-px bg-brass"></div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android" className="h-12 filter grayscale" />
+          </div>
+        </div>
+      </div>
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-4xl md:text-5xl font-light tracking-tight text-center mb-16" style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Gallery</h2>
         <GalleryGrid />

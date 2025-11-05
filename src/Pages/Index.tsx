@@ -1,3 +1,4 @@
+import OurWorkV2 from "@/Components/OurWorkV2";
 import Header from "@/Components/Header";
 import Hero from "@/Components/Hero";
 import Ethos from "@/Components/Ethos";
@@ -9,107 +10,12 @@ import Footer from "@/Components/Footer";
 import SocialProof from "@/Components/SocialProof";
 import Testimonials from "@/Components/Testimonials";
 import { Button } from "@/Components/UI/button";
-import Masonry from 'react-masonry-css';
-import { Lightbox } from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import { useState, useEffect, useRef } from "react";
 import ScrollIndicator from '@/Components/ScrollIndicator';
-import { useFadeInUp, useSlideInLeft, useSlideInRight, useScaleIn, useBounceIn, useStaggerReveal, useRotateIn } from '@/Hooks/useScrollAnimation';
-import { useRandomFlowAnimation } from '@/Hooks/useRandomFlowAnimation';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import StarRating from '@/Components/UI/StarRating';
 
 // Custom hook for alternating direction autoplay
-const useAlternatingAutoplay = (swiperRef, delay = 3000, isEnabled = true) => {
-  useEffect(() => {
-    if (!swiperRef.current || !isEnabled) return;
-
-    let direction = 'forward';
-    let interval;
-
-    const startAlternatingAutoplay = () => {
-      interval = setInterval(() => {
-        if (swiperRef.current && isEnabled) {
-          if (direction === 'forward') {
-            swiperRef.current.slideNext();
-          } else {
-            swiperRef.current.slidePrev();
-          }
-          direction = direction === 'forward' ? 'reverse' : 'forward';
-        }
-      }, delay);
-    };
-
-    startAlternatingAutoplay();
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [swiperRef, delay, isEnabled]);
-};
 
 const Index = () => {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const swiperRef = useRef(null);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  // Scroll animation hooks
-  const { elementRef: trustedByRef, isVisible: trustedByVisible } = useFadeInUp();
-  const { elementRef: logosRef, isVisible: logosVisible } = useSlideInLeft();
-  const { elementRef: ethosRef, isVisible: ethosVisible } = useScaleIn();
-  const { elementRef: servicesRef, isVisible: servicesVisible } = useStaggerReveal();
-  const { containerRef: randomFlowRef, isVisible: randomFlowVisible } = useRandomFlowAnimation();
-  const { elementRef: ourWorkRef, isVisible: ourWorkVisible } = useSlideInRight();
-  const { elementRef: socialProofRef, isVisible: socialProofVisible } = useFadeInUp();
-  const { elementRef: testimonialsRef, isVisible: testimonialsVisible } = useRotateIn();
-
-  // Built-in autoplay now handles timing
-
-  const handlePrev = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slidePrev();
-    }
-  };
-
-  const handleNext = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slideNext();
-    }
-  };
-
-  const toggleAutoPlay = () => {
-    setIsAutoPlaying(!isAutoPlaying);
-  };
-
-  // Generate 10 square gallery images (Google Images placeholders)
-  const galleryImages = [
-    { src: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=400&fit=crop', alt: 'Elegant wedding reception setup', caption: 'Wedding Reception Setup' },
-    { src: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=400&fit=crop', alt: 'Corporate event table setting', caption: 'Corporate Event Table' },
-    { src: 'https://images.unsplash.com/photo-1559329007-40df7a6c9b0f?w=400&h=400&fit=crop', alt: 'Business lunch catering service', caption: 'Business Lunch Service' },
-    { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=400&fit=crop', alt: 'Fine dining experience', caption: 'Fine Dining Experience' },
-    { src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=400&fit=crop', alt: 'Seasonal menu presentation', caption: 'Seasonal Menu Highlight' },
-    { src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=400&fit=crop', alt: 'Romantic dinner setup', caption: 'Intimate Dinner for Two' },
-    { src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&h=400&fit=crop', alt: 'Luxury event decor', caption: 'Special Occasion Decor' },
-    { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop', alt: 'Executive catering service', caption: 'Executive Catering' },
-    { src: 'https://images.unsplash.com/photo-1506280754576-f6fa8a873550?w=400&h=400&fit=crop', alt: 'Chef signature dish preparation', caption: 'Chef\'s Signature Dish' },
-    { src: 'https://images.unsplash.com/photo-1551782450-17144efb5723?w=400&h=400&fit=crop', alt: 'Artistic culinary presentation', caption: 'Culinary Artistry' }
-  ];
-
-  const openLightbox = (index: number) => {
-    setCurrentImageIndex(index);
-    setLightboxOpen(true);
-  };
-
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1
-  };
 
   return (
     <div className="min-h-screen">
@@ -125,18 +31,20 @@ const Index = () => {
 
       {/* Trusted By Section */}
       <section
-        ref={trustedByRef}
-        className={`trusted-by-section py-8 text-center ${trustedByVisible ? 'animate-fade-in-up animate-visible' : 'animate-fade-in-up'}`}
+        className="trusted-by-section py-8 text-center"
       >
+        <div className="h-px w-12 bg-accent/40 mx-auto mb-8" />
         <h2 className="section-title mb-4">
           Trusted By
         </h2>
+        <p className="text-base text-muted-foreground max-w-md mx-auto font-light">
+          Endorsed by experts, loved by hosts, and cherished by guests.
+        </p>
       </section>
 
       {/* Logos Slider Section */}
       <section
-        ref={logosRef}
-        className={`flx flx-logos ${logosVisible ? 'animate-slide-in-left animate-visible' : 'animate-slide-in-left'}`}
+        className="flx flx-logos"
       >
         <div className="logos-swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
           {/* Additional required wrapper */}
@@ -177,18 +85,24 @@ const Index = () => {
         </div>
       </section>
 
-      <div
-        ref={ethosRef}
-        className={`${ethosVisible ? 'animate-scale-in animate-visible' : 'animate-scale-in'}`}
-      >
+      {/* Star Rating */}
+      <div className="text-center mt-4 mb-8">
+        <StarRating rating={5} size={24} color="text-yellow-500" />
+        <p className="text-sm text-gray-600 mt-2">Based on 100+ reviews</p>
+      </div>
+
+      <div>
         <Ethos />
       </div>
 
-      <div
-        ref={servicesRef}
-        className={`${servicesVisible ? 'animate-stagger-reveal animate-visible' : 'animate-stagger-reveal'}`}
-      >
+      <div>
         <Services />
+      </div>
+
+      <OurWorkV2 />
+
+      <div>
+        <Testimonials />
       </div>
 
       {/* Gold separator line */}
@@ -198,143 +112,7 @@ const Index = () => {
 
       <SocialProof />
 
-      {/* Signature Experiences Section */}
-      <div
-        ref={randomFlowRef}
-        className="signature-experiences-section py-16 w-full bg-background"
-      >
-        <div className="container mx-auto px-8 text-center">
-          <h2 className="section-title">Signature Experiences</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Card 1: Weddings */}
-            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
-              <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Weddings</h3>
-              <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Crafting unforgettable culinary journeys for your special day.</p>
-              <Button
-                size="lg"
-                className="text-base font-normal tracking-wide hover:bg-primary hover:text-primary-foreground transition-colors uppercase"
-              >
-                Explore service
-              </Button>
-            </div>
 
-            {/* Card 2: Corporate */}
-            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
-              <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Corporate</h3>
-              <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Elevating business events with sophisticated and seamless catering.</p>
-              <Button
-                size="lg"
-                className="text-base font-normal tracking-wide hover:bg-primary hover:text-primary-foreground transition-colors uppercase"
-              >
-                Explore service
-              </Button>
-            </div>
-
-            {/* Card 3: Intimate Gatherings */}
-            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
-              <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Intimate Gatherings</h3>
-              <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Personalized dining experiences for cherished moments with loved ones.</p>
-              <Button
-                size="lg"
-                className="text-base font-normal tracking-wide hover:bg-primary hover:text-primary-foreground transition-colors uppercase"
-              >
-                Explore service
-              </Button>
-            </div>
-
-            {/* Card 4: Special Occasions */}
-            <div className={`card p-6 rounded-lg shadow-lg bg-card flex flex-col items-center relative gold-flair-container overflow-hidden animate-random-flow ${randomFlowVisible ? 'animate-visible' : ''}`}>
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent rounded-t-lg z-10"></div>
-              <h3 className="mb-4 text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>Special Occasions</h3>
-              <p className="mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Celebrating life's milestones with exquisite food and impeccable service.</p>
-              <Button
-                size="lg"
-                className="text-base font-normal tracking-wide hover:bg-primary hover:text-primary-foreground transition-colors uppercase"
-              >
-                Explore service
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Our Work (Event Highlights Gallery) */}
-      <section
-        ref={ourWorkRef}
-        className={`event-highlights ${ourWorkVisible ? 'animate-slide-in-right animate-visible' : 'animate-slide-in-right'}`}
-      >
-        <div className="container">
-          <h2 className="section-title">Our Work</h2>
-          <Swiper
-            spaceBetween={0}
-            slidesPerView={3}
-            loop={true}
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false
-            }}
-            speed={12000}
-            pagination={{
-              el: '.swiper-pagination-custom',
-              clickable: true,
-              dynamicBullets: true,
-            }}
-            navigation={false}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 0,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 0,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 0,
-              },
-              1200: {
-                slidesPerView: 5,
-                spaceBetween: 0,
-              },
-            }}
-          >
-            {galleryImages.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  loading="lazy"
-                  className="w-full aspect-square object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop'; // Fallback image
-                  }}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          {/* Custom pagination container */}
-          <div className="swiper-pagination-custom mt-8 flex justify-center"></div>
-
-        </div>
-      </section>
-
-      <div
-        ref={testimonialsRef}
-        className={`${testimonialsVisible ? 'animate-rotate-in animate-visible' : 'animate-rotate-in'}`}
-      >
-        <Testimonials />
-      </div>
 
       {/* Gold separator line */}
       <div className="flex justify-center py-8">
@@ -372,13 +150,7 @@ const Index = () => {
       <Contact />
       <Footer />
 
-      {/* Lightbox */}
-      <Lightbox
-        open={lightboxOpen}
-        close={() => setLightboxOpen(false)}
-        index={currentImageIndex}
-        slides={galleryImages.map(img => ({ src: img.src, alt: img.alt }))}
-      />
+
     </div>
   );
 };

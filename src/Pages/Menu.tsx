@@ -6,6 +6,7 @@ import Footer from "@/Components/Footer";
 import { Button } from "@/Components/UI/button";
 import ScrollIndicator from "@/Components/ScrollIndicator";
 import CTAPanel from "@/Components/CTAPanel";
+import SignatureItems from "@/Components/SignatureItems";
 
 const Menu = () => {
   const [activeSection, setActiveSection] = useState('family-style');
@@ -41,6 +42,7 @@ const Menu = () => {
         }
       />
       <ScrollIndicator />
+      <SignatureItems />
 
       {/* Menu Navigation */}
       <div className="py-8 px-6 bg-background">

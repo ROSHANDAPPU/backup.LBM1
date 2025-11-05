@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const testimonialsData = [
   {
@@ -20,6 +20,8 @@ const testimonialsData = [
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [backgroundOpacity, setBackgroundOpacity] = useState(1);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -29,8 +31,39 @@ const Testimonials = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Only fade when the section is scrolling past the top
+      if (rect.top > 0) {
+        // Section hasn't started scrolling past yet
+        setBackgroundOpacity(1);
+      } else {
+        // Section is scrolling past the top, fade out
+        const opacity = Math.max(0, 1 - (-rect.top / windowHeight)); // Fade over full viewport height
+        setBackgroundOpacity(opacity);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="bg-stone py-20">
+    <div
+      ref={sectionRef}
+      className="relative py-20"
+      style={{
+        background: `rgba(245, 245, 220, ${backgroundOpacity})`, // Stone/cream background with opacity
+      }}
+    >
       <div className="container mx-auto text-center">
         <div className="relative h-64">
           {testimonialsData.map((testimonial, index) => (
@@ -43,7 +76,7 @@ const Testimonials = () => {
               <span className="text-sm font-semibold tracking-widest text-gray-500 uppercase">
                 {testimonial.year}
               </span>
-              <blockquote className="mt-4 text-2xl font-light italic text-gray-800 max-w-2xl mx-auto">
+              <blockquote className="mt-4 text-2xl font-light italic text-gray-800 max-w-2xl mx-auto font-serif">
                 {testimonial.quote}
               </blockquote>
               <p className="mt-4 text-base font-medium text-gray-600">{testimonial.author}</p>

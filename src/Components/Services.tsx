@@ -5,22 +5,28 @@ import { Link } from "react-router-dom";
 
 const services = [
   {
-    title: "Elevated Catering",
+    title: "Weddings",
     description: "Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table.",
     image: culinaryImage,
     slug: "/catering",
   },
   {
-    title: "Corporate Events",
+    title: "Corporate",
     description: "Professional gatherings that impress. We handle the details. You focus on your guests.",
     image: corporateImage,
     slug: "/corporate",
   },
   {
-    title: "Event Planning",
+    title: "Intimate Gatherings",
     description: "Seamless coordination. Trusted local vendors. We manage logistics. You enjoy the moment.",
     image: culinaryImage,
     slug: "/events",
+  },
+  {
+    title: "Special Occasions",
+    description: "Experience bespoke culinary creations in the comfort of your home with our expert private chefs.",
+    image: culinaryImage,
+    slug: "/special-occasions",
   },
 ];
 
@@ -31,7 +37,7 @@ const Services = () => {
         <div className="text-center mb-24 space-y-6">
           <div className="h-px w-12 bg-accent/40 mx-auto mb-8" />
           <h2 className="text-4xl sm:text-5xl font-light mb-4 tracking-tight">
-            Our Services
+            Signature Experiences
           </h2>
           <p className="text-base text-muted-foreground max-w-md mx-auto font-light">
             Intimate gatherings. Corporate celebrations. Elegance, handled.

@@ -49,7 +49,7 @@ const Header = () => {
                 ABOUT
               </Link>
               <Link to="/gallery" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
-                GALLERY
+                OUR WORK
               </Link>
             </div>
           </div>
@@ -108,7 +108,7 @@ const Header = () => {
               ABOUT
             </Link>
             <Link to="/gallery" className="text-sm font-medium text-foreground hover:text-brass">
-              GALLERY
+              OUR WORK
             </Link>
             <Link to="/menu" className="text-sm font-medium text-foreground hover:text-brass">
               MENU
